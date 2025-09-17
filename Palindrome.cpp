@@ -1,7 +1,6 @@
-
 /*
 Aparajita Baidya
-9.11.2025
+9.17.2025
 Palindrome
 Get input (max 80 char)
 rm spaces and punctuation
@@ -19,17 +18,17 @@ using namespace std;
 int main()
 {
   //input
-  char original[10];
+  char original[80];
   cout << "enter an input of at max 80 characters"<<endl;
-  cin.get(original, 10);
+  cin.get(original, 80);
   cin.get(); //kill
   cout << "so, your input is:" << endl;
   cout << original << endl;
   
   //rm spaces and punctuation
-  char adjusted[10];
+  char adjusted[80];
   int count = 0 ;
-  cout<< strlen(original)<<endl;
+  //cout<< strlen(original)<<endl;
   
   for (int i = 0; i < strlen(original); i++) //set up i, while condition, then increase i each loop
   {
@@ -40,32 +39,38 @@ int main()
       if ((original[i] >= 'A' && original[i] <= 'Z') || (original[i] >= 'a' && original[i]<='z'))
       {
 	//add to adjusted
-	adjusted[count] = original[i];
+	adjusted[count] = tolower(original[i]);
 	count ++;
       }
     }
   }
   //main resturns 0 for some reason for certain inputs like p!!!deo
   cout << "Adjusted:" << adjusted << endl;
-  //reverse
-  char reversed[81];
-  //iterate backwards!!!
-  /*
-  for (int i = strlen(adjusted)-1; i>0; i--)
+
+  //two cases, strlen is odd or strlen is even
+  int chars = strlen(adjusted);
+  int rmder = chars % 2;
+  int indexleft = 0;
+  int palindrome = 0; //0 for yes, 1 for no
+  cout << "len odd or even (1 = odd, 0 = even):" << rmder << endl;
+  //cout << adjusted[chars-1];
+  for (int i = 0; indexleft <= ((chars-rmder)/2); i++)
   {
-    if (adjusted[i] != '\0')
+    if (adjusted[i] != adjusted[chars-1-i]) //what is wrong here?
     {
-      cout << adjusted[i];
-      reversed[i] = adjusted[i];
+      palindrome = 1;
     }
+    indexleft ++;
   }
-  cout << "reversed:" << reversed;
-  //print result
-  /*for (int i = 0, condition, i++)
-    compare array stuff
-    cout << "Palindrome"
-    if not palindrome
-    cout << "Not a palindrome"
-   */
+  if (palindrome == 1)
+  {
+    cout << "Not a palindrome";
+  }
+  else if (palindrome == 0)
+  {
+    cout << "Palindrome";
+  }
+
   return 0;
 }
+
