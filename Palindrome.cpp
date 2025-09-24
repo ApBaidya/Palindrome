@@ -1,10 +1,9 @@
 /*
 Aparajita Baidya
-9.17.2025
+9.24.2025
 Palindrome
 Get input (max 80 char)
 rm spaces and punctuation
-reverse it
 check if palindrome
 if yes print "Palindrome"
 If no print "Not a palindrome"
@@ -20,14 +19,14 @@ int main()
   //input
   char original[80];
   cout << "enter an input of at max 80 characters"<<endl;
-  cin.get(original, 80);
-  cin.get(); //kill
+  cin.get(original, 80); 
+  cin.get(); //kill haha
   cout << "so, your input is:" << endl;
-  cout << original << endl;
+  cout << original << endl; //let them know what they typed
   
   //rm spaces and punctuation
   char adjusted[80];
-  int count = 0 ;
+  int count = 0;
   //cout<< strlen(original)<<endl;
   
   for (int i = 0; i < strlen(original); i++) //set up i, while condition, then increase i each loop
@@ -39,12 +38,11 @@ int main()
       if ((original[i] >= 'A' && original[i] <= 'Z') || (original[i] >= 'a' && original[i]<='z'))
       {
 	//add to adjusted
-	adjusted[count] = tolower(original[i]);
-	count ++;
+	adjusted[count] = tolower(original[i]); //just to make sure lower and capital doesn't matter
+	count ++; //c(ount)++
       }
     }
   }
-  //main resturns 0 for some reason for certain inputs like p!!!deo
   cout << "Adjusted:" << adjusted << endl;
 
   //two cases, strlen is odd or strlen is even
@@ -56,7 +54,7 @@ int main()
   //cout << adjusted[chars-1];
   for (int i = 0; indexleft <= ((chars-rmder)/2); i++)
   {
-    if (adjusted[i] != adjusted[chars-1-i]) //what is wrong here?
+    if (adjusted[i] != adjusted[chars-1-i]) 
     {
       palindrome = 1;
     }
@@ -70,7 +68,6 @@ int main()
   {
     cout << "Palindrome";
   }
-
   return 0;
 }
 
