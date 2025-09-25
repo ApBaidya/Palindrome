@@ -17,7 +17,7 @@ using namespace std;
 int main()
 {
   //input
-  char original[80];
+  char original[81];
   cout << "enter an input of at max 80 characters"<<endl;
   cin.get(original, 80); 
   cin.get(); //kill haha
@@ -25,7 +25,7 @@ int main()
   cout << original << endl; //let them know what they typed
   
   //rm spaces and punctuation
-  char adjusted[80];
+  char adjusted[81];
   int count = 0;
   //cout<< strlen(original)<<endl;
   
